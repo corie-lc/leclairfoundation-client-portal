@@ -4,7 +4,7 @@ from helpers.systems import get_user_requests
 from flask_session import Session
 from flask import Flask, render_template, redirect, request, session, url_for
 
-from helpers import systems
+from helpers import systems, gmail
 
 # Flask constructor takes the name of 
 # current module (__name__) as argument.
@@ -53,7 +53,9 @@ def index():
 
 @app.route('/create_request', methods=['POST', 'GET'])
 def create_request():
+    gmail.send_update_email(session['username'])
     systems.create_request(request.form.get('request_info'), session['username'])
+    
     
     return redirect('/dashboard')
 
