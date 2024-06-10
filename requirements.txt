@@ -9,3 +9,4 @@ Flask-session
 Boto3
 s3transfer
 bcrypt
+yagmail
