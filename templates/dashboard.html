@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>HTML5 Boilerplate</title>
+        <title>Client Portal</title>
         <link rel="stylesheet" href="styles.css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
@@ -17,6 +17,7 @@
                   <h5 class="card-title">Welcome to the LeClair Foundations Client Portal Dashboard</h5>
                   <h6 class="card-subtitle mb-2 text-muted">Use this portal to put in requests and check on the status.</h6>
                   <p class="card-text">If you have more complicated needs, please reach out to our team.</p>
+                  <a class="btn btn-success" href="https://hs4.name.tools:2096/" class="card-link">Email Login</a>
                   <a class="btn btn-success" href="https://leclairfoundation.org/contacts" class="card-link">Support</a>
                   <a class="btn btn-success" href="https://leclairfoundation.org" class="card-link">Our website</a>
                   <a class="btn btn-success" href="/logout" class="card-link">Logout</a>
@@ -30,7 +31,7 @@
                 <div class="card-body w-100">
                     <div class="card w-100">
                         <div class="card-header">
-                          Your recent requests
+                          Put in a new ticket or request.
                         </div>
 
 
@@ -40,12 +41,39 @@
     
                             <form class="text-center align-items-center p-5" method="POST" action="/create_request">
                               <div class="mb-3">
-                                <label for="exampleInputEmail1" class="form-label">Create your request here. Include as much information as possible. Send all images & attatchments to <a href="mailto:requests@leclairfoundation.org">requests@leclairfoundation.org.</a> You can make the textbox larger by dragging the right hand corner with your mouse/finger.</label>
+                                <label for="exampleInputEmail1" class="form-label">Create your request here. Include as much information as possible. You can make the textbox larger by dragging the right hand corner with your mouse/finger.</label>
                                 <textarea class="form-control" id="exampleInputEmail1" name="request_info" aria-describedby=""> </textarea>
                                 <div id="emailHelp" class="form-text">We'll never share your information with anyone else.</div>
                               </div>
+
+                              <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                Upload Files & Images
+                              </button>
                               
-                              <button type="submit" class="btn btn-success">Submit</button>
+                              <!-- Modal -->
+                              <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                  <div class="modal-content">
+                                    <div class="modal-header">
+                                      <h5 class="modal-title" id="exampleModalLabel">Upload Multiple Files | Partnership with JotForms</h5>
+                                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                      <script type="text/javascript" src="https://form.jotform.com/jsform/241874942720057"></script>
+                                    </div>
+                                    <div class="modal-footer">
+                                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <br/>
+
+                              <button type="submit" class="btn btn-danger w-100 mt-4">Send Request</button>
+
+
+                              
                             </form>
               
                       </div>
@@ -91,7 +119,7 @@
                                           <span class="badge bg-success">Finished</span>
 
                                         {% elif request[1] == "error" %}
-                                          <span class="badge bg-success">On Hold, Check Comments</span>
+                                          <span class="badge bg-success">On Hold, Check Email</span>
                                         {%endif%}
 
 
